@@ -1,0 +1,4 @@
+#navigation UL{list-style:none; margin:0; padding:0}
+#navigation LI{display: block; border-left: 12px solid #711515; background-
+color:#DDAAAA;text-decoration: none;color:#FFFFFF; float:left; width:100px}
+#navigation UL LI A:hover{background-color: yellow; width: 100%}

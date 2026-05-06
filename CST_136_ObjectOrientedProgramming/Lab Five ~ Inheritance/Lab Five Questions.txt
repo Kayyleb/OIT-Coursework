@@ -1,0 +1,176 @@
+Lab Five Questions: 
+1: 
+Mammal default ctor
+Mammal one arg ctor
+Elk default ctor
+Mammal one arg ctor
+Elk one arg ctor
+Mammal one arg ctor
+Otter One Argument Ctor
+Otter Dtor
+Mammal dtor
+Elk dtor
+Mammal dtor
+Elk dtor
+Mammal dtor
+Mammal dtor
+
+2: 
+I am a mammal
+I am an elk
+I am an elk
+I am an otter
+
+3: 
+Mammal copy = 
+
+4: 
+Mammal Copy = 
+I am a mammal
+
+5: 
+Mammal copy ctor
+Elk copy ctor
+Elk cdtor
+Mammal dtor
+
+6: 
+Mammal copy ctor
+Mammal dtor
+
+7: 
+Mammal Default ctor
+Mammal One arg ctor
+Elk Default ctor
+Mammal One arg ctor
+Otter Default ctor
+I am a mammal
+I am a mammal
+I am a mammal
+mammal dtor
+mammal dtor
+mammal dtor
+
+8:
+Only the mammal destructors are called when deleting the pointers 
+Mammal dtor
+Mammal dtor
+Mammal dtor
+
+9: 
+The size of Mammal is 40
+
+10: 
+The size of Elk is 48
+
+11: 
+Mammal default ctor
+Mammal one arg ctor
+Elk default ctor
+Mammal one arg ctor
+Otter Default Ctor
+I am a mammal
+I am an elk
+I am an Otter
+Mammal dtor
+Mammal dtor
+Mammal dtor
+
+12:
+The size of a Mammal is 48
+
+13: 
+The size of an Elk is 56
+
+14: 
+I am a mammal
+I am an elk
+I am an Otter
+Mammal dtor
+Elk dtor
+Mammal dtor
+Otter Dtor
+Mammal dtor
+
+// Otter and Elk dtors are called instead of only mammal ones after the arry we made in question 7
+
+15: 
+Yes, after running the program with a breakpoint on the cleanup loop, when deleting the otter and elk pointers, their respective destructors are called as well as the Mammal destructor.
+
+16: 
+The size of an Animal is 48
+
+17: 
+The size of an Mammal is 48
+
+18: 
+The size of an Elk is 56
+
+19: 
+No they didn't change, I think because we are doing the same thing we were doing before but just in a different class instead, so the size of the elk and mammal don't change. (unless i did something wrong)
+
+20:
+I compiled the code, and it displayed 
+
+/*
+
+I am an Animal, Species: elephant
+I am a mammal
+I am an elk, Species: Elk
+I am an Otter, Species: Otter
+
+*/
+
+Considering our animal class is not supposed to have a default ctor, I initialized Animal's element to "elephant" so it would actually create an object and compile.
+
+21: 
+While trying to recompile the project, it wont compile because of errors "Animal: no appropriate constructors available". This is because when you make the WhatAmI function pure virtual, you cannot instantiate an object using the Animal class anymore because it i not considered Abstract. 
+
+22: 
+The output was: 
+
+I am a mammal
+I am a mammal
+I am an Elk
+I am an Otter
+
+23: 
+Commenting out the WhatAmI function in Mammal gave us more errors because since it doesn't have that function anymore, it tried to inherit it from Animal, but because we have it as a pure virtual function, the Mammal class inherited that trait instead. So since Mammal inherited the abstract class, it then became abstract and couldn't instantiate any more objects itself either. 
+
+24:
+The project did indeed compile but when it tried to output the "WhatAmI" function, it couldn't so it took it from the mammal class and outputted another "I am a Mammal" line, but since in the elk.cpp file I used 
+
+" I am a" << GetSpecies() << std::endl; instead of writing out Elk (so i can use my GetSpecies fucntion even though we weren't asked to) so the actual output still outputed the GetSpecies function. So the real output was "I am a mammalElk". 
+
+25:
+I am a Mammal
+I am a Mammal
+I am an Elk
+I am an Otter
+I am an Bird
+I am an Duck
+
+26:
+I am a Mammal
+I am a Mammal
+I am an Elk
+I am an Otter
+I am an Bird
+I am an Platypus
+
+27: 
+This does not compile because of the diamond inheritance problem. Platypus Inherits Otter which Inherits Mammal Which Inherits Animal, and Duck inherits Animal already. So if you try to make Platypus derive from both Duck and Otter, then it will be trying to inherit from the same class twice way up the line. 
+
+28:
+I am a Mammal
+I am a Mammal
+I am an Elk
+I am an Otter
+I am an Bird
+I am an Platypus
+
+
+
+
+
+

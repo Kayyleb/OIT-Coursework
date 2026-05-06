@@ -1,0 +1,33 @@
+<HTML>
+<BODY>
+<canvas id="golfCanvas" width="400" height="250"></canvas>
+<SCRIPT>
+
+var canvas = document.getElementById("golfCanvas");
+var ctx = canvas.getContext("2d");
+
+ctx.strokeRect(0, 0, 240, 120); // border
+
+ctx.fillStyle = "green"; // grass
+ctx.fillRect(0, 60, 240, 40);
+
+ctx.beginPath(); // golf ball
+ctx.fillStyle = "pink";
+ctx.arc(30, 55, 10, 0, 2 * Math.PI);
+ctx.fill();
+
+ctx.beginPath(); // flag pole
+ctx.moveTo(240, 10);
+ctx.lineTo(240, 60);
+ctx.stroke();
+
+ctx.beginPath(); // flag
+ctx.fillStyle = "red";
+ctx.moveTo(200, 30);
+ctx.lineTo(240, 10);
+ctx.lineTo(240, 30);
+ctx.fill();
+
+</SCRIPT>
+</BODY>
+</HTML>

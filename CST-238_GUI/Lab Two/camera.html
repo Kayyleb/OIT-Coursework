@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Access and Photo Capture</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        #video {
+            width: 100%;
+            max-width: 640px;
+            height: auto;
+            border: 1px solid #ddd;
+        }
+        #photo {
+            width: 100%;
+            max-width: 640px;
+            height: auto;
+            border: 1px solid #ddd;
+            margin-top: 20px;
+        }
+        #captureButton {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Camera Access and Photo Capture</h1>
+    <video id="video" autoplay playsinline></video>
+    <br>
+    <button id="captureButton">Take Photo</button>
+    <canvas id="canvas" style="display:none;"></canvas>
+    <img id="photo" alt="Captured photo will appear here">
+
+    <script>
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const photo = document.getElementById('photo');
+        const captureButton = document.getElementById('captureButton');
+
+        async function startCamera() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { 
+                        facingMode: 'environment' 
+                    } 
+                });
+                video.srcObject = stream;
+            } catch (err) {
+                console.error("Error accessing the camera", err);
+                alert("Error accessing the camera: " + err.message);
+            }
+        }
+
+        captureButton.addEventListener('click', () => {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+            const imageDataUrl = canvas.toDataURL('image/jpeg');
+            photo.src = imageDataUrl;
+        });
+
+        // Start the camera when the page loads
+        window.addEventListener('load', startCamera);
+    </script>
+</body>
+</html>

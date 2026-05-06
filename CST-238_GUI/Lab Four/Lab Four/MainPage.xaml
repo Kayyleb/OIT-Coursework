@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab_Four.MainPage"
+             xmlns:local="clr-namespace:Lab_Four.Drawables">
+
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="File">
+            <MenuFlyoutItem Text="Open" Clicked="OpenClick"/>
+            <MenuFlyoutItem Text="Save" Clicked="SaveClick"/>
+            <MenuFlyoutItem Text="Exit" Clicked="ExitClick"/>
+        </MenuBarItem>
+
+        <MenuBarItem Text="Shapes">
+            <MenuFlyoutItem Text="Line" Clicked="setShape"/>
+            <MenuFlyoutItem Text="Rectangle" Clicked="setShape"/>
+            <MenuFlyoutItem Text="Oval" Clicked="setShape"/>
+        </MenuBarItem>
+
+        <MenuBarItem Text="Stroke Color">
+            <MenuFlyoutItem Text="Red" Clicked="setStrokeColor"/>
+            <MenuFlyoutItem Text="Orange" Clicked="setStrokeColor"/>
+            <MenuFlyoutItem Text="Yellow" Clicked="setStrokeColor"/>
+            <MenuFlyoutItem Text="Green" Clicked="setStrokeColor"/>
+            <MenuFlyoutItem Text="Blue" Clicked="setStrokeColor"/>
+            <MenuFlyoutItem Text="Purple" Clicked="setStrokeColor"/>
+            <MenuFlyoutItem Text="Pink" Clicked="setStrokeColor"/>
+            <MenuFlyoutItem Text="Black" Clicked="setStrokeColor"/>
+            <MenuFlyoutItem Text="White" Clicked="setStrokeColor"/>
+        </MenuBarItem>
+
+        <MenuBarItem Text="Fill Color">
+            <MenuFlyoutItem Text="Red" Clicked="setFillColor"/>
+            <MenuFlyoutItem Text="Orange" Clicked="setFillColor"/>
+            <MenuFlyoutItem Text="Yellow" Clicked="setFillColor"/>
+            <MenuFlyoutItem Text="Green" Clicked="setFillColor"/>
+            <MenuFlyoutItem Text="Blue" Clicked="setFillColor"/>
+            <MenuFlyoutItem Text="Purple" Clicked="setFillColor"/>
+            <MenuFlyoutItem Text="Pink" Clicked="setFillColor"/>
+            <MenuFlyoutItem Text="Black" Clicked="setFillColor"/>
+            <MenuFlyoutItem Text="White" Clicked="setFillColor"/>
+        </MenuBarItem>
+
+        <MenuBarItem Text="Help">
+            <MenuFlyoutItem Text="About" Clicked="AboutClick"/>
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
+
+    <local:CanvasDrawable HorizontalOptions="Fill" VerticalOptions="Fill" x:Name="myCanvas">
+        <local:CanvasDrawable.GestureRecognizers>
+            <PointerGestureRecognizer
+                PointerPressed="PointerGestureRecognizer_PointerPressed"
+                PointerReleased="PointerGestureRecognizer_PointerReleased">
+            </PointerGestureRecognizer>
+        </local:CanvasDrawable.GestureRecognizers>
+    </local:CanvasDrawable>
+</ContentPage>

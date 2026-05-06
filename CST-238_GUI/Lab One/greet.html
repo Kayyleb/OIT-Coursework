@@ -1,0 +1,12 @@
+<HTML>
+<SCRIPT LANGUAGE=JAVASCRIPT>
+function converse(){
+alert("You typed "+document.greetform.greeting.value);
+document.greetform.greeting.value="Bye-Bye";
+}
+</SCRIPT>
+<FORM NAME="greetform">
+<INPUT TYPE=TEXT VALUE="Howdy" SIZE=10 NAME="greeting">
+<INPUT TYPE=BUTTON VALUE="Click Me" OnClick="converse()">
+</FORM>
+</HTML>

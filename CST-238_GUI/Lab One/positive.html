@@ -1,0 +1,20 @@
+<HTML>
+<SCRIPT LANGUAGE=JAVASCRIPT>
+function isPositive(){
+var testNum=document.positiveForm.fieldVar.value;
+if(testNum>0){
+alert("The number is positive.");
+}
+if(testNum<0){
+alert("The number is negative.");
+}
+if(testNum==0){
+alert("The number is zero.");
+}
+}
+</SCRIPT>
+<FORM NAME="positiveForm">
+<INPUT TYPE=TEXT VALUE="0" SIZE=10 NAME="fieldVar">
+<INPUT TYPE=BUTTON VALUE="Test the Number" OnClick="isPositive()">
+</FORM>
+</HTML>
