@@ -1,0 +1,32 @@
+Arrray UML Overview
+ - the start_index = 0 in the second ctor is a default argument. If only one argument is provided in that ctor, then the other one will be set to 0 originally
+ - the "in" and "inout" 
+	- In: Means the parameter passed in cannot be changed, passed by value
+	- Out: Parameter is passed in a way that it can be changed, and we dont care about the original value of it 
+	- Inout: Similar to out, but we do care about the original value of the parameter 
+
+1 Dimensional Arrays: 
+
+Arrays (Dynamic Arrays)
+ - We cannot pass native arrays by value
+	- Passs By Value: Passing a parameter and making a copy of it, but only the copy gets changed and not the original value
+	- For native arrays, we usually pass by pointer
+	- Cannot do " Arr1[] = Arr2[] "
+Copy Ctor is called 3 times: 
+ - When passing a parameter by value
+ - When returning a variable by value
+ - When creating a new object of the same data type
+	- i.e. Arr1 = Arr2
+
+Arrays need to be dynamic for most real applications. As in they need to expand and shrink when needed 
+Arrays are also called Vectors
+
+Setters and Getters are only if you want a consumer to change the values of your data members 
+datatype * data -> pointer data types are no access so no setters and getters
+datatype data   -> other data types need setters and getters
+
+
+
+
+
+

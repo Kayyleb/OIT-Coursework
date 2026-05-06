@@ -1,0 +1,70 @@
+LinkedList Manager functions
+
+Ctor: 
+List<T>::List() : m_head(nullptr) , m_tail(nullptr)
+{
+}
+
+Copy
+List<T>::List(const List& other) : m_head(nullptr) , m_tail (nullptr0
+{
+ Node<T>* current = other.m_head;
+while(current != nullptr)
+{
+Append(current->m_data);
+current = current->m_next;
+}
+}
+
+Move
+List<T>::List(List&& other) : m_head(other.m_head) , m_tail(other.m_tail)
+{
+other.m_head = nullptr;
+other.m_tail = nullptr;
+}
+
+Dtor
+List<T>::~List() 
+{
+Purge();
+m_head = nullptr;
+m_tail = nullptr;
+}
+
+List<T>& List<T>::operator=(const List& other)
+{
+if(this != &other
+{
+Purge();
+Node<T>* current = other.m_head;
+while(current != nullptr)
+{
+Append(current->m_data);
+current = current->m_next;
+}
+}
+return *this;
+}
+
+void List<T> Append(T data)
+{
+Node<T>* newNode = new Node<T>(other)
+if(!m_head)
+tail = newNode
+head = newNode
+
+else
+tail->next = newNode
+newNode->previous = tail
+tail = newNode
+
+voud List<T> Prepend(T data)
+{
+if (!m_head)
+tail = newNode
+head = newNode
+
+else
+newNode->next = head
+head->previous = newNode
+head = newNode

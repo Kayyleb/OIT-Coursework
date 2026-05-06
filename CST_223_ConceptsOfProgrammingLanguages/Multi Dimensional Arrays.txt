@@ -1,0 +1,61 @@
+Multi Dimensional Arrays
+- 2D Array: Array of Arrays
+	A single dimensional array full of single dimensional arrays
+
+- memory layout of a 2d array
+
+- how to overload operators so one could use two or more subscript operators
+array[][] = 42;
+
+- how to resize a multidimensional array
+memory is flat, not stored:
+1 | 2 | 3 | 4 
+5 | 6 | 7 | 8 
+
+stores row by row
+1|2|3|4 - 5|6|7|8
+row0, then row2, etc.
+
+"Array2D & m_array2D " is a reference data member
+ - can be thought of as a nickname 
+  	
+
+	int A
+  	int& B = A
+ - No matter what you call it, its still referencing to the same thing 
+ - do to bmi (base member initialization)...
+
+<<const>> is a const method, different than returning a const 
+a const method is a method that makes sure that the compiler will not change the data member 
+- anytime we don't change the object is when we should use const
+	- getters
+	- print functions
+	- etc
+
+Array2D ->friends->row
+Row-><doesn't need to be friends with A2D>
+
+Subscript Op for A2D ~ returns a row ~returned by value ~1 line of code // select: check for negative rows and columns, 5 lines of code 
+~ return Row(*this , d_row);
+
+returned by value because *this is a temporary object, and returning by reference is returning a reference to a destroyed object
+
+Array2D class must be const compliant
+should be able to call the subscript operators from const objects, and make sure nothing can be changed in that object
+- dynamic cast, subject cast
+- will be using dynamic cast:
+allows you to toggle the "const-ness" of an object
+as in allows you to make it const or turn off const on an object
+theres other ways out there, but the way todd told us is ^
+
+Implementation 2: we're going to get rid of the embedded array class and make it a 2 star pointer 
+warning: Array2D, setRow & setColumn especially will be the tougher functions
+
+maybe: if we are setting an array or column, might have to delete the last numbers, copy the rest, and then create a new object with the new size & lesser amount of data
+
+
+
+
+
+
+

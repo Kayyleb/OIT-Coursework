@@ -1,0 +1,53 @@
+quick sort original
+
+void arrayQuickSort(int arr[], int first, int last)
+{
+	int small = first + 1;
+	int large = last;
+	int pivot = arr[first];
+
+	while (small <= large)
+	{
+		while (small <= last && arr[small] < pivot)
+		{
+			++small;
+		}
+
+		while (large >= first && arr[large] > pivot)
+		{
+			--large;
+		}
+
+		if (small < large)
+		{
+			std::swap(arr[small++], arr[large--]);
+		}
+	}
+
+	std::swap(arr[large], arr[first]);
+	if (first < large)
+	{
+		arrayQuickSort(arr, first, large - 1);
+	}
+	if (last > large)
+	{
+		arrayQuickSort(arr, large + 1, last);
+	}
+}
+
+void arrayQuick(int arr[], int size)
+{
+	if (size >= 2)
+	{
+		int max = 0;
+		for (int i = 1; i < size; ++i)
+		{
+			if (arr[max] < arr[i])
+			{
+				max = i;
+			}
+		}
+		std::swap(arr[size - 1], arr[max]);
+		arrayQuickSort(arr, 0, size - 1);
+	}
+}

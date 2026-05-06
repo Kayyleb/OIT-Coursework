@@ -1,0 +1,31 @@
+Binary Tree
+
+void BSTree<T>:: Insert(BSNode<T>*& node , T data)
+{
+ if (!node)
+  node = new BSNode<T>(data)
+
+else if (data < root->data)
+	Insert(root->left , data
+else if(data > root->data)
+	Insert(root->right , data
+
+void BSTree<T>::BreadthFirst(BSNode<T>* node , void(*visit)(T data))
+{
+ if(node)
+	{
+		std::queue <BSNode<T>*> queue;
+		queue.push(node);
+		While(!queue.empty())
+		{
+		BSNode<T> * node = queue.front()
+		queue.pop();
+		
+		visit(node->data);
+
+		if(node->left)
+			queue.push(node->left)
+		if(node->right)
+			queue.push(node->right)
+	}
+	

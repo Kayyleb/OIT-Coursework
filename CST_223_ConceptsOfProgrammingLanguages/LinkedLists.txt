@@ -1,0 +1,49 @@
+LinkedLists
+
+- Linked list is a data structure that maintains a collection of elements, with the number of elements being unknown
+- A node pointing to another node pointing to another node and so on
+	- A node is an element filled with data
+	- A LinkedList is a collection of nodes linked together
+
+- We will not be deleting the next pointer in the node destructor
+- Memory is allocated in the LinkedList and so memory should be deallocated in the same space
+
+A tail pointer is a pointer that points to the last node in the linked list and will be used to traverse back on the linked list
+
+- can always store an address of a child in a pointer of a parent 
+
+?? friend classes
+	why are friend glasses more optimal than setters and getters
+?? Forward Declaration 
+
+node function(s) should be private because only linkedlist class should be calling it not the consumer or anything else
+
+copy code: 
+	head = new Node<T>(other.head->data);   // create a new node (a copy of the old head) and set it as the head of this list
+	Node<T>* Current = head;                // pointer to the current head
+	Node<T>* newCurrent = other.head->next; // pointer to the second node in the new list
+
+	while (newCurrent != nullptr) // traverse to the end of the list
+	{
+		Current->next = new Node<T>(newCurrent->data, Current); // create a new node for each node in the list
+		Current = Current->next;                                // move to the next node 
+		newCurrent = newCurrent->next;                          // move to the next node in the new list
+	}
+	tail = Current; // set the tail as the new node we just created
+
+copy ass code: 
+head = new Node<T>(other.head->data); //create a copy of new node 
+Node<T>* Current = head; // pointer to the current head
+Node<T>* newCurrent = other.head->next; //pointer to the copy head
+
+if (this != &other)
+{
+	while (newCurrent != nullptr) // traverse to the end of the list
+	{
+		Current->next = new Node<T>(newCurrent->data, Current); // create a new node. and link the new node's previous node to the current node
+		Current = Current->next; // move to the new node 
+		newCurrent = newCurrent->next; // move to the next node in the new list
+	}
+	tail = Current; // set the tail as the new node we just created
+	return *this;
+}

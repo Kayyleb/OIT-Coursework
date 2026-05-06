@@ -1,0 +1,16 @@
+Stack & Queues
+
+Stack: LiFo data structure
+	Last in, First out
+Push: Adding to top of the Stack
+Pop: Returning, and Removing off of stack
+Peek: Returning top of the stack (not removing)
+	Same thing as "top"
+
+
+Queue: FiFo data structure
+	First in, First out
+Enqueue: Adding to back of the queue
+Dequeue: Removing from the front of the queue
+Peek: Returning (not removing) from the front of the queue
+	Same thing as "top"

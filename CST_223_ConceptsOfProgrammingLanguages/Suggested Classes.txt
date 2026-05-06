@@ -1,0 +1,15 @@
+Suggested Classes:
+- Minesweeper
+- Board
+- Cell (each square)
+
+No bomb class, because a bomb is data
+
+Make Cell first, test if it works, then create the board and expand the cells
+board pointer > board object
+
+Big O notation..?
+
+
+
+
