@@ -1,0 +1,15 @@
+/get
+n 88
+/set_include_path
+:set number
+:826
+V
+:809G
+d
+Esc	
+:837
+P
+dd
+
+
+
