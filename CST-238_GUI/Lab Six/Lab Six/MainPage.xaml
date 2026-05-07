@@ -9,6 +9,7 @@
         <local:InventoryViewModel />
     </ContentPage.BindingContext>
 
+    <Grid>
     <HorizontalStackLayout BackgroundColor="Black" Spacing="10" Padding="10">
 
         <Grid x:Name="GameGrid"
@@ -65,4 +66,17 @@
 
         </VerticalStackLayout>
     </HorizontalStackLayout>
+
+        <Label x:Name="WinLabel"
+           Text="YOU WIN"
+           FontSize="48"
+           FontAttributes="Bold"
+           TextColor="Gold"
+           HorizontalOptions="Center"
+           VerticalOptions="Center"
+           IsVisible="False"
+           BackgroundColor="#AA000000" />
+        
+    </Grid>
+    
 </ContentPage>

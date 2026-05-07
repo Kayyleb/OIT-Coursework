@@ -10,10 +10,11 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
-        BuildGrid();
-        PlaceItems();
-        PlacePlayer();
+        BuildGrid(); // build grid when the game starts
+        PlaceItems(); // then place items
+        PlacePlayer(); // then the player
 
+        // to handle arrow key input
         this.HandlerChanged += (s, e) =>
         {
             if (Handler?.PlatformView is Microsoft.UI.Xaml.UIElement element)
@@ -23,27 +24,33 @@ public partial class MainPage : ContentPage
                     switch (args.Key)
                     {
                         case Windows.System.VirtualKey.Up:
-                            Up(null, null); break;
+                            Up(null, null); 
+                            break;
                         case Windows.System.VirtualKey.Down:
-                            Down(null, null); break;
+                            Down(null, null); 
+                            break;
                         case Windows.System.VirtualKey.Left:
-                            Left(null, null); break;
+                            Left(null, null); 
+                            break;
                         case Windows.System.VirtualKey.Right:
-                            Right(null, null); break;
+                            Right(null, null); 
+                            break;
                     }
                 };
             }
         };
     }
 
+    // function to build the grid with walls 
     void BuildGrid()
     {
-        for (int i = 0; i < GridSize; i++)
+        for (int i = 0; i < GridSize; i++) // create the rows and columns of the grid
         {
             GameGrid.RowDefinitions.Add(new RowDefinition { Height = CellSize });
             GameGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = CellSize });
         }
 
+        // for loop to build the walls of the grid
         for (int row = 0; row < GridSize; row++)
         {
             for (int col = 0; col < GridSize; col++)
@@ -62,7 +69,7 @@ public partial class MainPage : ContentPage
                         Aspect = Aspect.Fill
                     };
                 }
-                else
+                else // if we are not on the perimiter, them fill with black for the floor
                 {
                     cell = new BoxView
                     {
@@ -79,18 +86,20 @@ public partial class MainPage : ContentPage
         }
     }
 
+    // function to place the items on the grid
     void PlaceItems()
     {
-        var key = new GameItem("key.png", 2, 3, isCollectible: true);
+        var key = new GameItem("key.png", 2, 3, isCollectible: true); // place blue key
         AddBoardItem(key);
 
-        var goldKey = new GameItem("goldkey.png", 5, 5, isCollectible: true);
+        var goldKey = new GameItem("goldkey.png", 5, 5, isCollectible: true); // place gold key
         AddBoardItem(goldKey);
 
-        var door = new GameItem("door.png", 0, 3); // col 0 = left wall, row 3 = middle
+        var door = new GameItem("door.png", 0, 4); // place door somewhat in the middle of the left wall
         AddBoardItem(door);
     }
 
+    // function actually adds the item image to the grid
     void AddBoardItem(GameItem item)
     {
         boardItems.Add(item);
@@ -99,6 +108,7 @@ public partial class MainPage : ContentPage
         GameGrid.Children.Add(item);
     }
 
+    // function to the place the player
     void PlacePlayer()
     {
         owl = new GameItem("owl.png", 3, 4);
@@ -128,20 +138,32 @@ public partial class MainPage : ContentPage
         if (owl.GameColumn < GridSize - 2) { owl.GameColumn++; CheckInventory(); }
     }
 
+    // this function checks and updates ionventory when you interact with either one of the key's images 
     void CheckInventory()
     {
         var viewModel = BindingContext as InventoryViewModel;
 
         foreach (var item in boardItems.ToList())
         {
-            if (item.IsCollectible
-                && item.IsVisible
+            if (item.IsCollectible && item.IsVisible
                 && item.GameRow == owl.GameRow
                 && item.GameColumn == owl.GameColumn)
             {
                 item.IsVisible = false;
                 viewModel?.AddItem(item.ImageUrl);
             }
+        }
+
+        CheckWin();
+    }
+
+    // checks win condition of the game and dispays win label
+    void CheckWin()
+    {
+        var door = boardItems.FirstOrDefault(i => i.ImageUrl == "door.png");
+        if (door != null && owl.GameColumn == 1 && owl.GameRow == door.GameRow)
+        {
+            WinLabel.IsVisible = true;
         }
     }
 }
